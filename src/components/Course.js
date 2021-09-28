@@ -1,6 +1,6 @@
 import { getCourseTerm, hasConflict, timeParts } from '../utilities/times.js';
 import { setData } from '../utilities/firebase.js';
-
+import React from 'react';
 export const getCourseNumber = course => (
     course.id.slice(1, 4)
 );
@@ -29,7 +29,7 @@ const reschedule = async (course, meets) => {
 
 const Course = ({ course, selected, setSelected }) => {
   const isSelected = selected.includes(course);
-  const isDisabled = hasConflict(course, selected);
+  const isDisabled = !isSelected && hasConflict(course, selected);
   const style = {
     backgroundColor: isDisabled? 'lightgrey' : isSelected ? 'lightgreen' : 'white'
   };
