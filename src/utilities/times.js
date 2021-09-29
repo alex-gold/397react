@@ -23,7 +23,15 @@ export const timeConflict = (course1, course2) => (
 
 export const getCourseTerm = course => (
     terms[course.id.charAt(0)]
-  );
+);
+  
+export const getCourseMeetingData = course => {
+  const meets = prompt('Enter meeting data: MTuWThF hh:mm-hh:mm', course.meets);
+  const valid = !meets || timeParts(meets).days;
+  if (valid) return meets;
+  alert('Invalid meeting data');
+  return null;
+};
 
   
 export const terms = { F: 'Fall', W: 'Winter', S: 'Spring' };
