@@ -20,7 +20,7 @@ const getCourseMeetingData = course => {
 const reschedule = async (course, meets) => {
   if (meets && window.confirm(`Change ${course.id} to ${meets}?`)) {
     try {
-      await setData(`schedule/courses/${course.id}/meets`, meets);
+      await setData(`/courses/${course.id}/meets`, meets);
     } catch (error) {
       alert(error);
     }
